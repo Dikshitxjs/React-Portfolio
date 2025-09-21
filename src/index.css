@@ -1,0 +1,196 @@
+/* Sidebar container */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 100vh;
+  background: #fff;
+  border-right: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  overflow-y: auto;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+body.dark .sidebar {
+  background: #1f1f1f;
+  border-right: 1px solid #333;
+  color: #f5f5f5;
+}
+
+/* Profile Section */
+.profile {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile-img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.profile-name {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.profile-role {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+body.dark .profile-role {
+  color: #aaa;
+}
+
+/* Resume Button */
+.resume-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f5f5f5;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: #333;
+  transition: background 0.3s;
+}
+
+.resume-btn:hover {
+  background: #f6c344;
+  color: #000;
+}
+
+body.dark .resume-btn {
+  background: #333;
+  color: #f5f5f5;
+}
+
+/* Navigation */
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.menu a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  text-decoration: none;
+  color: inherit;
+  padding: 8px 10px;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+.menu a:hover {
+  background: #f6c34433;
+}
+
+body.dark .menu a:hover {
+  background: #444;
+}
+
+/* Dark Mode Toggle */
+.dark-toggle {
+  margin-top: auto;
+  margin-bottom: 10px;
+}
+
+.dark-toggle button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #f5f5f5;
+  font-size: 0.9rem;
+}
+
+.dark-toggle button:hover {
+  background: #f6c344;
+}
+
+body.dark .dark-toggle button {
+  background: #333;
+  color: #f5f5f5;
+}
+
+/* Footer */
+.sidebar-footer {
+  text-align: center;
+  font-size: 0.75rem;
+  color: #888;
+}
+
+body.dark .sidebar-footer {
+  color: #aaa;
+}
+
+/* =====================
+   RESPONSIVENESS
+   ===================== */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 220px;
+    padding: 15px;
+  }
+
+  .profile-img {
+    width: 75px;
+    height: 75px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -260px; /* hide sidebar */
+    width: 220px;
+    height: 100vh;
+    transition: left 0.3s ease-in-out;
+  }
+
+  .sidebar.active {
+    left: 0; /* show when active */
+  }
+
+  .content {
+    margin-left: 0 !important;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 480px) {
+  .profile-name {
+    font-size: 1rem;
+  }
+
+  .profile-role {
+    font-size: 0.8rem;
+  }
+
+  .resume-btn {
+    font-size: 0.8rem;
+    padding: 6px 10px;
+  }
+}
