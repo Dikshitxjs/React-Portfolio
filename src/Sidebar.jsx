@@ -1,111 +1,44 @@
-import React, { useState, useEffect } from "react";
-import {
-  Button,
-  Typography,
-  IconButton,
-  Avatar,
-  Box,
-} from "@mui/material";
-import {
-  Home as HomeIcon,
-  Person as UserIcon,
-  EmojiEvents as TrophyIcon,
-  AccountTree as ProjectIcon,
-  Article as BlogIcon,
-  Brightness2 as MoonIcon,
-  Download as DownloadIcon,
-} from "@mui/icons-material"; // Material UI icons
-import ProfileImg from "./assets/profile.jpg";
 
-const Sidebar = () => {
-  const [darkMode, setDarkMode] = useState(false);
+import headerPic from "./assets/profile.jpg"; 
 
-  useEffect(() => {
-    if (darkMode) {
-      document.body.classList.add("dark");
-    } else {
-      document.body.classList.remove("dark");
-    }
-  }, [darkMode]);
-
+function Sidebar() {
   return (
-    <Box
-      sx={{
-        width: 260,
-        height: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        borderRight: "1px solid #ddd",
-        p: 2,
-        bgcolor: "background.paper",
-      }}
-    >
-      {/* Profile Section */}
-      <Box textAlign="center">
-        <Avatar
-          src={ProfileImg}
+    <aside className="w-72 bg-white dark:bg-gray-900 p-6 flex flex-col justify-between h-screen">
+ 
+      <div className="flex flex-col items-center">
+        <img
+           src={headerPic}
           alt="Profile"
-          sx={{ width: 100, height: 100, margin: "0 auto" }}
+          className="w-24 h-24 rounded-full border-4 border-gray-200 dark:border-gray-700 mx-auto"
         />
-        <Typography variant="h6" sx={{ mt: 2 }}>
-          Dikshit Phuyal
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Front-End Developer
-        </Typography>
-        <Button
-          variant="contained"
-          color="primary"
-          startIcon={<DownloadIcon />}
-          href="/resume.pdf"
-          download
-          sx={{ mt: 2 }}
-        >
-          Resume
-        </Button>
-      </Box>
+        <h2 className="mt-4 text-lg font-bold text-gray-900 dark:text-white">Dikshit Phuyal</h2>
+        <h3 className="text-sm text-gray-500 dark:text-gray-400">Front-End-Developer</h3>
+        <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600" >
+          Download CV
+        </button>
+      </div>
 
-      {/* Navigation */}
-      <Box display="flex" flexDirection="column" gap={1} mt={3}>
-        <Button startIcon={<HomeIcon />} href="#home">
-          Home
-        </Button>
-        <Button startIcon={<UserIcon />} href="#about">
-          About
-        </Button>
-        <Button startIcon={<TrophyIcon />} href="#achievements">
-          Achievements
-        </Button>
-        <Button startIcon={<ProjectIcon />} href="#projects">
-          Projects
-        </Button>
-        <Button startIcon={<BlogIcon />} href="#blogs">
-          Blogs
-        </Button>
-      </Box>
+    
+      <nav className="flex flex-col space-y-4 mt-8">
+        <a href="#" className="text-gray-700 dark:text-gray-200 hover:text-blue-500">Home</a>
+        <a href="#" className="text-gray-700 dark:text-gray-200 hover:text-blue-500">About</a>
+        <a href="#" className="text-gray-700 dark:text-gray-200 hover:text-blue-500">Achievements</a>
+        <a href="#" className="text-gray-700 dark:text-gray-200 hover:text-blue-500">Projects</a>
+        <a href="#" className="text-gray-700 dark:text-gray-200 hover:text-blue-500">Blogs</a>
+      </nav>
 
-      {/* Dark Mode Toggle */}
-      <Box textAlign="center" mt={2}>
-        <Button
-          variant="outlined"
-          startIcon={<MoonIcon />}
-          onClick={() => setDarkMode(!darkMode)}
-        >
-          {darkMode ? "Light Mode" : "Dark Mode"}
-        </Button>
-      </Box>
+    
+      <div className="flex flex-col items-center space-y-4 mt-8">
+        <button className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white rounded hover:bg-gray-300 dark:hover:bg-gray-600">
+          Theme change
+        </button>
+        <p className="text-sm text-gray-500 dark:text-gray-400 text-center">
+          © 2025 Dikshit Phuyal
+        </p>
+      </div>
+    </aside>
 
-      {/* Footer */}
-      <Box textAlign="center" mt={3}>
-        <Typography variant="caption" color="text.secondary">
-          Designed & Built by <br />
-          <strong>Dikshit Phuyal</strong> <br />
-          © {new Date().getFullYear()}, All rights reserved.
-        </Typography>
-      </Box>
-    </Box>
   );
-};
+}
 
 export default Sidebar;
