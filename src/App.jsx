@@ -1,34 +1,76 @@
-import React ,{useState} from "react";
-import Header from "./Header";
+import React, { useState, useEffect } from "react";
 import Sidebar from "./Sidebar";
-import "./index.css";
+import Header from "./Header";
+import RightSide from "./RightSide";
 
 function App() {
- 
-  return (
-    //horizontal flex layout with full screen height
-    <div className="flex min-h-screen gap-x-4 bg-gray-50">
-      
-      {/* //Sidebar on the left with padding  */}
-      <Sidebar className="w-72 p-4 bg-white rounded-xl shadow" />
+const [theme, setTheme] = useState(() => {
+  // Initialize from localStorage or default to light
+  return localStorage.getItem("theme") || "light";
+});
 
-      {/* Main content area */}
-      <div className="flex-1 flex flex-col p-4">
-        
-        {/* Header at the top of main content */}
-        <Header className="mb-4 rounded-2xl shadow" />
+const toggleTheme = () => {
+  const newTheme = theme === "light" ? "dark" : "light";
+  setTheme(newTheme);
+  localStorage.setItem("theme", newTheme);
 
-        {/* Other content goes here */}
-        <div className="flex-1 bg-gray-100 rounded-xl p-4">
-          <h1 className="text-2xl font-bold mb-4">Welcome to the Dashboard</h1>
-          <p className="text-gray-700">
-            This is your main content area. Add sections, cards, or anything here.
-          </p>
-        </div>
+  if (newTheme === "dark") {
+    document.documentElement.setAttribute("data-theme", "dark");
+  } else {
+    document.documentElement.removeAttribute("data-theme");
+  }
+};
+useEffect(() => {
+  const savedTheme = localStorage.getItem("theme") || "light";
+  setTheme(savedTheme);
 
-      </div>
-    </div>
-  );
+  if (savedTheme === "dark") {
+    document.documentElement.setAttribute("data-theme", "dark");
+  } else {
+    document.documentElement.removeAttribute("data-theme");
+  }
+}, []);
+
+
+
+
+  
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleSidebar = () => setIsOpen(!isOpen);
+
+return (
+  <div className="flex min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300 px-4 py-6 gap-6 relative">
+    
+    {/* Sidebar toggle button */}
+    <button
+      onClick={toggleSidebar}
+      className="fixed top-4 left-4 p-2 bg-gray-200 rounded md:hidden z-50"
+    >
+      ☰
+    </button>
+
+    {/* Sidebar */}
+    <Sidebar 
+      isOpen={isOpen}
+      toggleSidebar={toggleSidebar}
+      toggleTheme={toggleTheme}
+      theme={theme}
+    />
+
+    {/* Main Content */}
+    <main className={`flex-1 flex flex-col gap-6 transition-all duration-300 ${isOpen ? 'md:ml-64' : ''}`}>
+      <Header />
+      {/* Other sections like CareerStats, Featured, Projects */}
+    </main>
+
+    {/* Right Side */}
+    <aside className="w-72 hidden xl:block">
+      <RightSide />
+    </aside>
+  </div>
+);
+
 }
 
 export default App;
