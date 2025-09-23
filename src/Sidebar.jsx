@@ -1,12 +1,51 @@
-// Sidebar.jsx
+import React, { useState, useEffect } from "react";
 import headerPic from "./assets/profile.jpg";
-import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
-function Sidebar({ isOpen, toggleSidebar,toggleTheme ,theme}) {
+function Sidebar() {
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem("theme") || "light";
+  });
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  // Toggle Sidebar (for mobile)
+  const toggleSidebar = () => setIsOpen(!isOpen);
+
+  // Toggle Theme
+  const toggleTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+
+    if (newTheme === "dark") {
+      document.documentElement.setAttribute("data-theme", "dark");
+    } else {
+      document.documentElement.removeAttribute("data-theme");
+    }
+  };
+
+  // Initialize theme on mount
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme") || "light";
+    setTheme(savedTheme);
+    if (savedTheme === "dark") {
+      document.documentElement.setAttribute("data-theme", "dark");
+    } else {
+      document.documentElement.removeAttribute("data-theme");
+    }
+  }, []);
 
   return (
     <>
+      {/* Sidebar toggle button for mobile */}
+      <button
+        onClick={toggleSidebar}
+        className="fixed top-4 left-4 p-2 bg-gray-200 dark:bg-gray-700 rounded md:hidden z-50"
+      >
+        ☰
+      </button>
+
       {/* Overlay for mobile */}
       <div
         className={`fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden transition-opacity duration-300 ${
@@ -17,7 +56,7 @@ function Sidebar({ isOpen, toggleSidebar,toggleTheme ,theme}) {
 
       {/* Sidebar */}
       <aside
-        className={` fixed top-0 left-0 h-full w-64 bg-white dark:bg-gray-900 p-6 shadow-lg z-40
+        className={`fixed top-0 left-0 h-full w-64 bg-white dark:bg-gray-900 p-6 shadow-lg z-40
           transform transition-transform duration-300
           ${isOpen ? "translate-x-0" : "-translate-x-full"}
           md:translate-x-0 md:static md:h-auto`}
@@ -40,39 +79,44 @@ function Sidebar({ isOpen, toggleSidebar,toggleTheme ,theme}) {
           </button>
         </div>
 
-        {/* Navigation */}
-        <nav className="flex flex-col space-y-4 mt-8">
-          <a
-            href="#"
-            className="text-gray-700 dark:text-gray-200 hover:text-blue-500 transition-colors"
-          >
-            Home
-          </a>
-          <a
-            href="#"
-            className="text-gray-700 dark:text-gray-200 hover:text-blue-500 transition-colors"
-          >
-            About
-          </a>
-          <a
-            href="#"
-            className="text-gray-700 dark:text-gray-200 hover:text-blue-500 transition-colors"
-          >
-            Achievements
-          </a>
-          <a
-            href="#"
-            className="text-gray-700 dark:text-gray-200 hover:text-blue-500 transition-colors"
-          >
-            Projects
-          </a>
-          <a
-            href="#"
-            className="text-gray-700 dark:text-gray-200 hover:text-blue-500 transition-colors"
-          >
-            Blogs
-          </a>
-        </nav>
+      {/* Navigation */}
+<nav className="flex flex-col space-y-4 mt-8">
+  <Link
+    to="/"
+    className="text-gray-700 dark:text-gray-200 hover:text-blue-500 transition-colors"
+  >
+    Home
+  </Link>
+
+  <Link
+    to="/About"
+    className="text-gray-700 dark:text-gray-200 hover:text-blue-500 transition-colors"
+  >
+    About
+  </Link>
+
+  <Link
+    to="/achievements"
+    className="text-gray-700 dark:text-gray-200 hover:text-blue-500 transition-colors"
+  >
+    Achievements
+  </Link>
+
+  <Link
+    to="/Project"
+    className="text-gray-700 dark:text-gray-200 hover:text-blue-500 transition-colors"
+  >
+    Projects
+  </Link>
+
+  <Link
+    to="/blogs"
+    className="text-gray-700 dark:text-gray-200 hover:text-blue-500 transition-colors"
+  >
+    Blogs
+  </Link>
+</nav>
+
 
         {/* Theme toggle & copyright */}
         <div className="flex flex-col items-center space-y-4 mt-8">
