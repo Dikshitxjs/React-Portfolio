@@ -1,6 +1,6 @@
 import Sidebar from "./Sidebar";
 import Home from "./Home";
-import Project from "./project";
+import Project from "./Project";
 import { Routes, Route } from "react-router-dom";
 import About from "./About";
 
