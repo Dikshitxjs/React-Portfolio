@@ -8,10 +8,10 @@ function App() {
   return (
     <div className="flex min-h-screen bg-gray-50 dark:bg-gray-900 px-4 py-6 gap-6 relative">
       
-      {/* Sidebar always visible */}
+    
       <Sidebar />
 
-      {/* Main content */}
+   
       <main className="flex-1 flex flex-col gap-6 transition-all duration-300">
         <Routes>
           <Route path="/" element={<Home />} />
