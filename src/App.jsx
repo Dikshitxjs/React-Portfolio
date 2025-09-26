@@ -6,7 +6,7 @@ import About from "./About";
 
 function App() {
   return (
-    <div className="flex min-h-screen bg-gray-50 dark:bg-gray-900 px-4 py-6 gap-6 relative">
+    <div className="flex min-h-screen bg-blue-100 dark:bg-gray-900 px-4 py-6 gap-6 relative">
       
     
       <Sidebar />

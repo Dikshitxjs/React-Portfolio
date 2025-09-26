@@ -42,7 +42,8 @@ function Sidebar() {
   }, [theme]);
 
   return (
-    <>
+    < >
+   
       {/* Sidebar toggle button for mobile */}
       <button
         onClick={toggleSidebar}
@@ -61,7 +62,7 @@ function Sidebar() {
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-full w-72 bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-md z-40
+        className={`fixed top-0 left-0 h-full w-72 bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md z-40
           transform transition-transform duration-300
           ${isOpen ? "translate-x-0" : "-translate-x-full"}
           md:translate-x-0 md:static md:h-auto`}
@@ -146,6 +147,7 @@ function Sidebar() {
           </p>
         </div>
       </aside>
+      
     </>
   );
 }
