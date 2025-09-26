@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { FaHtml5, FaJs, FaJava, FaGithub, FaLinkedin, FaMedium, FaWhatsapp } from "react-icons/fa";
-import { SiGmail } from "react-icons/si";
+import { motion } from "framer-motion";
+import { 
+  FaHtml5, FaJs, FaJava, FaGithub, FaLinkedin, FaMedium, FaWhatsapp, FaReact 
+} from "react-icons/fa";
+import { SiGmail, SiMui, SiFigma, SiCanva, SiAdobephotoshop } from "react-icons/si";
+
 import image from "./assets/image.png";
 import something from "./assets/something.png";
 import VRBox from "./assets/VRBox.png";
-
+import CountUp from "react-countup";
 function Home() {
   // --- Typing Text ---
   const fullText = [
@@ -90,22 +94,22 @@ function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="flex flex-col items-center bg-gray-50 dark:bg-gray-700 p-4 rounded-xl">
               <span className="text-2xl">⏱️</span>
-              <h3 className="text-lg font-semibold mt-2">2 years</h3>
+              <h3 className="text-lg font-semibold mt-2"><CountUp start ={0} end ={1} duration ={8}/> years</h3>
               <p className="text-sm text-gray-500 dark:text-gray-300">Experience</p>
             </div>
             <div className="flex flex-col items-center bg-gray-50 dark:bg-gray-700 p-4 rounded-xl">
               <span className="text-2xl">🏅</span>
-              <h3 className="text-lg font-semibold mt-2">20</h3>
+              <h3 className="text-lg font-semibold mt-2"><CountUp start ={0} end ={5} duration ={8}/></h3>
               <p className="text-sm text-gray-500 dark:text-gray-300">Certificates</p>
             </div>
             <div className="flex flex-col items-center bg-gray-50 dark:bg-gray-700 p-4 rounded-xl">
               <span className="text-2xl">📂</span>
-              <h3 className="text-lg font-semibold mt-2">15</h3>
+              <h3 className="text-lg font-semibold mt-2"><CountUp start ={0} end ={16} duration ={8}/></h3>
               <p className="text-sm text-gray-500 dark:text-gray-300">Projects</p>
             </div>
             <div className="flex flex-col items-center bg-gray-50 dark:bg-gray-700 p-4 rounded-xl">
               <span className="text-2xl">💻</span>
-              <h3 className="text-lg font-semibold mt-2">20</h3>
+              <h3 className="text-lg font-semibold mt-2"><CountUp start ={0} end ={7} duration ={10}/></h3>
               <p className="text-sm text-gray-500 dark:text-gray-300">Technologies</p>
             </div>
           </div>
@@ -125,18 +129,49 @@ function Home() {
       {/* Right Side Section */}
       <aside className="w-full xl:w-72 flex-shrink-0 space-y-6">
         
-        {/* Skill Set */}
-        <section className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow w-full">
-          <h2 className="text-lg font-bold mb-6 flex items-center gap-2">
-            <span>🔗</span> Skill Set
-          </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 text-4xl place-items-center">
-            <FaHtml5 className="text-orange-500 hover:scale-110 transition" />
-            <FaJs className="text-yellow-400 hover:scale-110 transition" />
-            <FaJava className="text-red-600 hover:scale-110 transition" />
-            <FaGithub className="text-gray-700 dark:text-white hover:scale-110 transition" />
-          </div>
-        </section>
+      {/* Skill Set */}
+<section className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow w-full">
+  <h2 className="text-lg font-bold mb-6 flex items-center gap-2">
+    <span>🔗</span> Skill Set
+  </h2>
+
+  <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-6 place-items-center">
+    {[
+      { icon: <FaHtml5 className="text-orange-500" /> },
+      { icon: <FaJs className="text-yellow-400" /> },
+      { icon: <FaJava className="text-red-600" /> },
+      { icon: <FaGithub className="text-gray-700 dark:text-white" /> },
+      { icon: <FaReact className="text-sky-500" /> },
+      { icon: <SiMui className="text-blue-500" /> },
+      { icon: <SiFigma className="text-pink-500" /> },
+      { icon: <SiAdobephotoshop className="text-blue-700" /> },
+      { icon: <SiCanva className="text-teal-400" /> },
+     
+      { icon: <FaMedium className="text-black dark:text-white" /> },
+      
+    ].map((item, i) => (
+      <motion.div
+        key={i}
+        className="text-4xl cursor-pointer"
+        animate={{
+          rotate: [0, 360],
+          scale: [1, 1.2, 1],
+          x: [0, Math.sin(i) * 15, 0],
+          y: [0, Math.cos(i) * 15, 0],
+        }}
+        transition={{
+          repeat: Infinity,
+          duration: 6,
+          ease: "easeInOut",
+          delay: i * 0.1,
+        }}
+        whileHover={{ scale: 1.3 }}
+      >
+        {item.icon}
+      </motion.div>
+    ))}
+  </div>
+</section>
 
         {/* Expertise */}
         <section className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow w-full">

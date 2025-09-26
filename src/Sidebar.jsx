@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import headerPic from "./assets/profile.jpg";
 import { Link } from "react-router-dom";
+import { FaHome, FaUser, FaTrophy, FaProjectDiagram, FaBlog } from "react-icons/fa";
 
 function Sidebar() {
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem("theme") || "light";
-  });
-
+  const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "light");
   const [isOpen, setIsOpen] = useState(false);
 
   // Toggle Sidebar (for mobile)
@@ -27,21 +25,19 @@ function Sidebar() {
 
   // Initialize theme on mount
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") || "light";
-    setTheme(savedTheme);
-    if (savedTheme === "dark") {
+    if (theme === "dark") {
       document.documentElement.setAttribute("data-theme", "dark");
     } else {
       document.documentElement.removeAttribute("data-theme");
     }
-  }, []);
+  }, [theme]);
 
   return (
     <>
       {/* Sidebar toggle button for mobile */}
       <button
         onClick={toggleSidebar}
-        className="fixed top-4 left-4 p-2 bg-gray-200 dark:bg-gray-700 rounded md:hidden z-50"
+        className="fixed top-4 left-4 p-2 bg-gray-200 dark:bg-gray-700 rounded-md md:hidden z-50 shadow"
       >
         ☰
       </button>
@@ -79,54 +75,57 @@ function Sidebar() {
           </button>
         </div>
 
-      {/* Navigation */}
-<nav className="flex flex-col space-y-4 mt-8">
-  <Link
-    to="/"
-    className="text-gray-700 dark:text-gray-200 hover:text-blue-500 transition-colors"
-  >
-    Home
-  </Link>
-
-  <Link
-    to="/About"
-    className="text-gray-700 dark:text-gray-200 hover:text-blue-500 transition-colors"
-  >
-    About
-  </Link>
-
-  <Link
-    to="/achievements"
-    className="text-gray-700 dark:text-gray-200 hover:text-blue-500 transition-colors"
-  >
-    Achievements
-  </Link>
-
-  <Link
-    to="/Project"
-    className="text-gray-700 dark:text-gray-200 hover:text-blue-500 transition-colors"
-  >
-    Projects
-  </Link>
-
-  <Link
-    to="/blogs"
-    className="text-gray-700 dark:text-gray-200 hover:text-blue-500 transition-colors"
-  >
-    Blogs
-  </Link>
-</nav>
-
+        {/* Navigation */}
+        <nav className="flex flex-col space-y-4 mt-8">
+          <Link
+            to="/"
+            className="flex items-center gap-2 text-gray-700 dark:text-gray-200 hover:text-blue-500 transition-colors"
+          >
+            <FaHome /> Home
+          </Link>
+          <Link
+            to="/About"
+            className="flex items-center gap-2 text-gray-700 dark:text-gray-200 hover:text-blue-500 transition-colors"
+          >
+            <FaUser /> About
+          </Link>
+          <Link
+            to="/achievements"
+            className="flex items-center gap-2 text-gray-700 dark:text-gray-200 hover:text-blue-500 transition-colors"
+          >
+            <FaTrophy /> Achievements
+          </Link>
+          <Link
+            to="/Project"
+            className="flex items-center gap-2 text-gray-700 dark:text-gray-200 hover:text-blue-500 transition-colors"
+          >
+            <FaProjectDiagram /> Projects
+          </Link>
+          <Link
+            to="/blogs"
+            className="flex items-center gap-2 text-gray-700 dark:text-gray-200 hover:text-blue-500 transition-colors"
+          >
+            <FaBlog /> Blogs
+          </Link>
+        </nav>
 
         {/* Theme toggle & copyright */}
         <div className="flex flex-col items-center space-y-4 mt-8">
-          <button
+          {/* Slider Toggle */}
+          <div
+            className="flex items-center gap-2 cursor-pointer"
             onClick={toggleTheme}
-            className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors flex items-center gap-2"
           >
-            <span>{theme === "light" ? "🌙" : "☀️"}</span>
-            {theme === "light" ? "Dark Mode" : "Light Mode"}
-          </button>
+            <span className="text-sm">{theme === "light" ? "🌙" : "☀️"}</span>
+            <div className="w-12 h-6 bg-gray-300 dark:bg-gray-700 rounded-full relative transition-colors">
+              <div
+                className={`w-6 h-6 bg-white dark:bg-gray-900 rounded-full shadow-md transform transition-transform duration-300 absolute top-0.5 ${
+                  theme === "dark" ? "translate-x-6" : "translate-x-0"
+                }`}
+              ></div>
+            </div>
+          </div>
+
           <p className="text-sm text-gray-500 dark:text-gray-400 text-center">
             © 2025 Dikshit Phuyal
           </p>
