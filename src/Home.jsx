@@ -59,14 +59,14 @@ function Home() {
   });
 
   return (
-    <div className="flex flex-col xl:flex-row gap-6">
+    <div className="flex flex-col xl:flex-row gap-4">
 
       {/* Left/Main Section (Header + Career Stats + Featured) */}
-      <div className="flex-1 flex flex-col gap-6">
+      <div className="flex-1 flex flex-col gap-4">
 
         {/* Header Section */}
-        <header className="relative w-full rounded-3xl overflow-hidden bg-white dark:bg-gray-800">
-          <div className="w-full pt-[40%] relative">
+        <header className="relative w-full mx-auto rounded-lg overflow-hidden bg-white dark:bg-gray-800">
+          <div className="w-full pt-[35%] relative">
             <img
               src={images[imgIndex]}
               alt="Profile"
@@ -89,37 +89,45 @@ function Home() {
         </header>
 
         {/* Career Stats Section */}
-        <section className="w-full bg-white dark:bg-gray-800 rounded-2xl p-6 shadow">
-          <h2 className="text-xl font-bold mb-4">Career Stats</h2>
+        <section className="w-full bg-white dark:bg-gray-800 rounded-lg p-6 shadow">
+          <h2 className="text-xl font-bold mb-4 text-gray-700 dark:text-white">Career Stats</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="flex flex-col items-center bg-gray-50 dark:bg-gray-700 p-4 rounded-xl">
               <span className="text-2xl">⏱️</span>
-              <h3 className="text-lg font-semibold mt-2"><CountUp start ={0} end ={1} duration ={8}/> years</h3>
-              <p className="text-sm text-gray-500 dark:text-gray-300">Experience</p>
+              <h3 className="text-lg font-semibold mt-2 text-gray-700 dark:text-white"><CountUp start ={0} end ={1} duration ={12}/> years</h3>
+              <p className="text-sm text-gray-700 dark:text-white">Experience</p>
             </div>
             <div className="flex flex-col items-center bg-gray-50 dark:bg-gray-700 p-4 rounded-xl">
               <span className="text-2xl">🏅</span>
-              <h3 className="text-lg font-semibold mt-2"><CountUp start ={0} end ={5} duration ={8}/></h3>
-              <p className="text-sm text-gray-500 dark:text-gray-300">Certificates</p>
+              <h3 className="text-lg font-semibold mt-2 text-gray-700 dark:text-white"><CountUp start ={0} end ={5} duration ={12}/></h3>
+              <p className="text-sm text-gray-700 dark:text-white">Certificates</p>
             </div>
             <div className="flex flex-col items-center bg-gray-50 dark:bg-gray-700 p-4 rounded-xl">
               <span className="text-2xl">📂</span>
-              <h3 className="text-lg font-semibold mt-2"><CountUp start ={0} end ={16} duration ={8}/></h3>
-              <p className="text-sm text-gray-500 dark:text-gray-300">Projects</p>
+              <h3 className="text-lg font-semibold mt-2 text-gray-700 dark:text-white"><CountUp start ={0} end ={16} duration ={8}/></h3>
+              <p className="text-sm text-gray-700 dark:text-white">Projects</p>
             </div>
             <div className="flex flex-col items-center bg-gray-50 dark:bg-gray-700 p-4 rounded-xl">
               <span className="text-2xl">💻</span>
-              <h3 className="text-lg font-semibold mt-2"><CountUp start ={0} end ={7} duration ={10}/></h3>
-              <p className="text-sm text-gray-500 dark:text-gray-300">Technologies</p>
+              <h3 className="text-lg font-semibold mt-2text-gray-700 dark:text-white"><CountUp start ={0} end ={7} duration ={10}/></h3>
+              <p className="text-sm text-gray-700 dark:text-white">Technologies</p>
             </div>
           </div>
         </section>
 
         {/* Featured Section */}
-        <section className="w-full bg-white dark:bg-gray-800 rounded-2xl p-6 shadow">
+        <section className="w-full bg-white dark:bg-gray-800 rounded-lg p-6 shadow">
           <h2 className="text-xl font-bold mb-4">Featured</h2>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-4">Feature 1</div>
+
+            <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-4">
+              Feature 1
+
+
+            </div>
+
+
             <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-4">Feature 2</div>
             <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-4">Feature 3</div>
           </div>
@@ -127,15 +135,18 @@ function Home() {
       </div>
 
       {/* Right Side Section */}
-      <aside className="w-full xl:w-72 flex-shrink-0 space-y-6">
+     <aside className="w-full xl:w-100 flex-shrink-0 space-y-6">
+
         
       {/* Skill Set */}
-<section className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow w-full">
+<section className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow w-full h-66">
   <h2 className="text-lg font-bold mb-6 flex items-center gap-2">
     <span>🔗</span> Skill Set
   </h2>
 
-  <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-6 place-items-center">
+<div className="grid grid-cols-4 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6 md:gap-12 place-items-center">
+
+
     {[
       { icon: <FaHtml5 className="text-orange-500" /> },
       { icon: <FaJs className="text-yellow-400" /> },
