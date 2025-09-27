@@ -2,20 +2,17 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Video from "./assets/Video.mp4";
 import { 
-  FaHtml5, FaJs, FaJava, FaGithub, FaLinkedin, FaMedium, FaWhatsapp, FaReact 
+  FaHtml5, FaJs, FaJava, FaGithub, FaLinkedin, FaMedium, FaWhatsapp, FaReact ,FaThumbtack, FaChartLine
 } from "react-icons/fa";
 import { SiGmail, SiMui, SiFigma, SiCanva, SiAdobephotoshop } from "react-icons/si";
 
-import image from "./assets/image.png";
-import something from "./assets/something.png";
-import VRBox from "./assets/VRBox.png";
 import CountUp from "react-countup";
 function Home() {
   // --- Typing Text ---
   const fullText = [
-    "You’re now in my creative space :)",
-    "I build amazing web apps!",
-    "Let’s create something together!"
+    "Welcome to my creative space :)",
+    "I deliver digital impact",
+    "Serious? Let’s get in touch"
   ];
   const [textIndex, setTextIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -40,15 +37,7 @@ function Home() {
     }
   }, [charIndex, textIndex, fullText]);
 
-  // // --- Image Slider ---
-  // const images = [VRBox, image, something];
-  // const [imgIndex, setImgIndex] = useState(0);
-  // useEffect(() => {
-  //   const interval = setTimeout(() => {
-  //     setImgIndex((imgIndex + 1) % images.length);
-  //   }, 7000);
-  //   return () => clearTimeout(interval);
-  // }, [imgIndex]);
+
 
   // --- Date ---
   const today = new Date();
@@ -86,7 +75,10 @@ function Home() {
 
     {/* Career Stats Section */}
     <section className="w-full bg-white dark:bg-gray-800 rounded-lg p-4 sm:p-6 md:p-8 shadow">
-      <h2 className="text-lg sm:text-xl font-bold mb-4 text-gray-700 dark:text-white">Career Stats</h2>
+       <h2 className="text-lg sm:text-xl font-bold mb-4 flex items-center gap-2 text-gray-700 dark:text-white">
+      <FaChartLine className=" text-gray-800 dark:text-white" size={22} />
+      Career Stats
+    </h2>
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
         <div className="flex flex-col items-center bg-gray-50 dark:bg-gray-700 p-3 sm:p-4 md:p-6 rounded-xl">
           <span className="text-xl sm:text-2xl">⏱️</span>
@@ -113,7 +105,11 @@ function Home() {
 
     {/* Featured Section */}
     <section className="w-full bg-white dark:bg-gray-800 rounded-lg p-4 sm:p-6 md:p-8 shadow">
-      <h2 className="text-lg sm:text-xl font-bold mb-4">Featured</h2>
+   
+      <h2 className="text-lg sm:text-xl font-bold mb-4 flex text-gray-800 dark:text-white items-center gap-2">
+      <FaThumbtack className="text-gray-800 dark:text-white" size={20} />
+      Featured 
+    </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
         <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 sm:p-5 md:p-6">Feature 1</div>
         <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 sm:p-5 md:p-6">Feature 2</div>
@@ -129,7 +125,7 @@ function Home() {
     {/* Skill Set */}
 {/* Skill Set */}
 <section className="bg-white dark:bg-gray-800 rounded-lg p-4 sm:p-6 md:p-8 shadow w-full">
-  <h2 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 flex items-center gap-2">
+  <h2 className="text-lg sm:text-xl xt-gray-700 dark:text-gray-200 font-bold mb-4 sm:mb-6 flex items-center gap-2">
     <span>🔗</span> Skill Set
   </h2>
 
@@ -172,20 +168,20 @@ function Home() {
 
     {/* Expertise */}
     <section className="bg-white dark:bg-gray-800 rounded-lg p-4 sm:p-6 md:p-8 shadow w-full">
-      <h2 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 flex items-center gap-2">
+      <h2 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 text-gray-700 dark:text-gray-200 flex items-center gap-2">
         <span>📊</span> Expertise
       </h2>
       <ul className="flex flex-col gap-3 sm:gap-4 md:gap-5">
-        <li className="flex items-center gap-2 sm:gap-3"><span className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-purple-200 flex items-center justify-center">💻</span> Web Development</li>
-        <li className="flex items-center gap-2 sm:gap-3"><span className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-orange-200 flex items-center justify-center">🎨</span> Graphic Design</li>
-        <li className="flex items-center gap-2 sm:gap-3"><span className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-cyan-200 flex items-center justify-center">📈</span> Digital Marketing</li>
-        <li className="flex items-center gap-2 sm:gap-3"><span className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-blue-200 flex items-center justify-center">✨</span> UI / UX Design</li>
+        <li className="flex items-center gap-2 text-gray-700 dark:text-gray-200 sm:gap-3"><span className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-purple-200 flex text-gray-700 dark:text-gray-200 items-center justify-center">💻</span> Web Development</li>
+        <li className="flex items-center gap-2text-gray-700 dark:text-gray-200 sm:gap-3"><span className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-orange-200 flex items-center justify-center">🎨</span> Graphic Design</li>
+        <li className="flex items-center gap-2text-gray-700 dark:text-gray-200 sm:gap-3"><span className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-cyan-200 flex items-center justify-center">📈</span> Digital Marketing</li>
+        <li className="flex items-center gap-2 text-gray-700 dark:text-gray-200 sm:gap-3"><span className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-blue-200 flex items-center justify-center">✨</span> UI / UX Design</li>
       </ul>
     </section>
 
     {/* Get in Touch */}
     <section className="bg-white dark:bg-gray-800 rounded-lg p-4 sm:p-6 md:p-8 shadow w-full">
-      <h2 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 flex items-center gap-2">
+      <h2 className="text-lg text-gray-700 dark:text-gray-200 sm:text-xl font-bold mb-4 sm:mb-6 flex items-center gap-2">
         <span>📬</span> Get in Touch
       </h2>
       <div className="flex gap-3 sm:gap-4 md:gap-5 flex-wrap text-2xl sm:text-2xl md:text-3xl">
@@ -195,8 +191,8 @@ function Home() {
         <FaMedium className="text-black dark:text-white cursor-pointer hover:scale-110 transition" />
         <FaWhatsapp className="text-green-500 cursor-pointer hover:scale-110 transition" />
       </div>
-      <p className="text-sm sm:text-base md:text-base text-gray-500 dark:text-gray-300 mt-3 sm:mt-4">
-        Let’s build something great together — feel free to connect with me through any of the platforms above.
+      <p className="text-sm sm:text-base md:text-base text-gray-700 dark:text-white mt-3 sm:mt-4">
+        Let’s build something great together <br/> Don't be shy! Hit me up! 🎈
       </p>
     </section>
 
