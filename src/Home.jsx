@@ -2,7 +2,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Video from "./assets/Video.mp4";
-import feature1 from "./assets/feature1.png";
+import currency from "./assets/currency.png";
+import tictactoe from "./assets/tictactoe.png";
+import parba from "./assets/parba.png";
+import feature1 from "./assets/Project1.png"; 
+import mern from "./assets/mern.png"; 
+
+
 import {
   FaHtml5,
   FaJs,
@@ -59,45 +65,45 @@ function Home() {
     day: "numeric",
   });
 
-  // Featured Works
   const [selectedWork, setSelectedWork] = useState(null);
-  const works = [
-    {
-      title: "HackerRank Frontend Developer Certificate",
-      date: "2025, June 17",
-      image: "/assets/hackerrank.png",
-      description:
-        "I earned my HackerRank Frontend Developer Certificate after completing challenges in React, CSS, and JavaScript. This certificate validates my frontend development skills and problem-solving ability.",
-    },
-    {
-      title: "My Portfolio — First JavaScript Project",
-      date: "August 5, 2025",
-      image: feature1,
-      description:
-        "This is the first project I built during my JavaScript learning journey — a personal portfolio website created with React and Tailwind CSS. It represents how I started turning my design ideas into interactive web experiences.",
-    },
-    {
-      title: "Techspire College Project",
-      date: "2025, May 10",
-      image: "/assets/techspire.png",
-      description:
-        "Developed a college management system with a React front end and Node.js backend, helping automate student record management efficiently.",
-    },
-    {
-      title: "React E-commerce UI",
-      date: "2025, July 14",
-      image: "/assets/ecommerce.png",
-      description:
-        "Built a modern, fully responsive React e-commerce UI with cart, filtering, and animations using Tailwind and Framer Motion.",
-    },
-    {
-      title: "Figma to React Conversion",
-      date: "2025, March 28",
-      image: "/assets/figma.png",
-      description:
-        "Converted Figma designs into pixel-perfect responsive React pages using Tailwind CSS and reusable components.",
-    },
-  ];
+
+const works = [
+  {
+    title: "Currency Converter (JS & API Fetch)",
+    date: "2024",
+    image: currency,
+    description:
+      "This was my first JavaScript project using fetch API for real-time currency conversion. It helped me understand APIs, DOM manipulation, and responsive UI building.",
+  },
+  {
+    title: "Tic-Tac-Toe Game (JavaScript)",
+    date: "2024",
+    image: tictactoe,
+    description:
+      "A JavaScript logic-based mini-game where I learned about arrays, conditions, win logic, and clean event handling in UI.",
+  },
+  {
+    title: "Parba Nepal — Event & Festival Info",
+    date: "2024",
+    image: parba,
+    description:
+      "A complete JavaScript project explaining Nepalese festivals. This improved my knowledge of dynamic UI rendering and better component structures.",
+  },
+  {
+    title: "My Personal Portfolio — Project 1 (React)",
+    date: "2025",
+    image: feature1,
+    description:
+      "My very first professional-level React project using reusable components, Tailwind CSS, and animations. This represents my transition from vanilla JS to modern frameworks.",
+  },
+  {
+    title: "Ongoing MERN Project",
+    date: "2025 — Present",
+    image: mern,
+    description:
+      "Currently developing a MERN full-stack application to level-up backend skills using Node.js, Express, MongoDB, and secure authentication.",
+  },
+];
 
   // Responsive carousel
   const [windowWidth, setWindowWidth] = useState(typeof window !== "undefined" ? window.innerWidth : 1200);
